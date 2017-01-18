@@ -2136,3 +2136,133 @@ Abp.Authorization.AbpAuthorizationException: Current user did not login to the a
    at Abp.Threading.AsyncHelper.RunSync(Func`1 action) in D:\Halil\Github\aspnetboilerplate\src\Abp\Threading\AsyncHelper.cs:line 42
    at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo) in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelperExtensions.cs:line 27
    at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext) in D:\Halil\Github\aspnetboilerplate\src\Abp.Web.Mvc\Web\Mvc\Authorization\AbpMvcAuthorizeFilter.cs:line 48
+DEBUG 2017-01-18 17:09:57,158 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-01-18 17:09:57,172 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2017-01-18 17:09:57,177 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MedicalVisitors.Web.MedicalVisitorsWebModule, MedicalVisitors.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,179 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MedicalVisitors.MedicalVisitorsDataModule, MedicalVisitors.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,179 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,179 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,179 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,180 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,180 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MedicalVisitors.MedicalVisitorsCoreModule, MedicalVisitors.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,180 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MedicalVisitors.MedicalVisitorsApplicationModule, MedicalVisitors.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,180 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,180 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MedicalVisitors.Api.MedicalVisitorsWebApiModule, MedicalVisitors.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,181 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,181 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,181 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,181 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,181 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:57,184 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2017-01-18 17:09:57,405 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 17:09:57,405 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 17:09:57,405 [1    ] o.Configuration.LanguageManagementConfig - Converted MedicalVisitors (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 17:09:57,405 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 17:09:57,816 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: MedicalVisitors.EntityFramework.MedicalVisitorsDbContext, MedicalVisitors.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 17:09:59,465 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2017-01-18 17:09:59,477 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-01-18 17:09:59,480 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-01-18 17:09:59,484 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: MedicalVisitors
+DEBUG 2017-01-18 17:09:59,485 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-01-18 17:09:59,671 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 17:09:59,751 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 7 classes define auto mapping attributes
+DEBUG 2017-01-18 17:09:59,751 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MedicalVisitors.MultiTenancy.Dto.CreateTenantInput
+DEBUG 2017-01-18 17:09:59,754 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MedicalVisitors.MultiTenancy.Dto.TenantListDto
+DEBUG 2017-01-18 17:09:59,755 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MedicalVisitors.Users.Dto.CreateUserInput
+DEBUG 2017-01-18 17:09:59,755 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MedicalVisitors.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2017-01-18 17:09:59,755 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MedicalVisitors.Sessions.Dto.UserLoginInfoDto
+DEBUG 2017-01-18 17:09:59,755 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MedicalVisitors.Users.Dto.UserListDto
+DEBUG 2017-01-18 17:09:59,755 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MedicalVisitors.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2017-01-18 17:10:02,081 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MedicalVisitors.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2017-01-18 17:10:02,083 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MedicalVisitors.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2017-01-18 17:10:02,084 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MedicalVisitors.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2017-01-18 17:10:02,085 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MedicalVisitors.Sessions.ISessionAppService' with service name 'app/session'.
+WARN  2017-01-18 17:10:06,262 [6    ] Abp.Logging.LogHelper                    - Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext() in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext() in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 100
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext() in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 67
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass3.<Run>b__1(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action) in D:\Halil\Github\aspnetboilerplate\src\Abp\Threading\AsyncHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo) in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelperExtensions.cs:line 27
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext) in D:\Halil\Github\aspnetboilerplate\src\Abp.Web.Mvc\Web\Mvc\Authorization\AbpMvcAuthorizeFilter.cs:line 48
+Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext() in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 42
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext() in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 100
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext() in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 67
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass3.<Run>b__1(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action) in D:\Halil\Github\aspnetboilerplate\src\Abp\Threading\AsyncHelper.cs:line 42
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo) in D:\Halil\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelperExtensions.cs:line 27
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext) in D:\Halil\Github\aspnetboilerplate\src\Abp.Web.Mvc\Web\Mvc\Authorization\AbpMvcAuthorizeFilter.cs:line 48
+WARN  2017-01-18 17:11:46,324 [6    ] sitors.Web.Controllers.AccountController - Login failed!
+Abp.UI.UserFriendlyException: Login failed!
+   at MedicalVisitors.Web.Controllers.AccountController.<GetLoginResultAsync>d__8.MoveNext() in c:\Users\Shop\Documents\GitHub\MedicalVisitors\MedicalVisitors.Web\Controllers\AccountController.cs:line 172
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at MedicalVisitors.Web.Controllers.AccountController.<Login>d__2.MoveNext() in c:\Users\Shop\Documents\GitHub\MedicalVisitors\MedicalVisitors.Web\Controllers\AccountController.cs:line 87
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at System.Threading.Tasks.TaskHelpersExtensions.ThrowIfFaulted(Task task)
+   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeAsynchronousActionMethod>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)

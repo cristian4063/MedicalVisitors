@@ -107,12 +107,15 @@ namespace MedicalVisitors.Web.Controllers
 
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
-            string serverActiveDirectory = ConfigurationManager.AppSettings["serverActiveDirectory"];
-            string domainActiveDirectory = ConfigurationManager.AppSettings["domainActiveDirectory"];
-
             bool activeDirectoryIsValid;
 
-            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, serverActiveDirectory, domainActiveDirectory))
+            var serverActiveDirectory = ConfigurationManager.AppSettings["serverActiveDirectory"];
+            var domainActiveDirectory = ConfigurationManager.AppSettings["domainActiveDirectory"];
+
+            //Update tenancyName with default value
+            tenancyName = string.IsNullOrEmpty(tenancyName) ? Tenant.DefaultTenantName : tenancyName;
+
+            using (var pc = new PrincipalContext(ContextType.Domain, serverActiveDirectory, domainActiveDirectory))
             {
                 activeDirectoryIsValid = pc.ValidateCredentials(usernameOrEmailAddress, password);
             }
@@ -125,20 +128,26 @@ namespace MedicalVisitors.Web.Controllers
 
                 if (loginResult.Result == AbpLoginResultType.InvalidUserNameOrEmailAddress)
                 {
-                    User user = new User();
-                    user.TenantId = 1;
-                    user.UserName = usernameOrEmailAddress;
-                    user.Name = "TQ";
-                    user.Surname = "TQ";
-                    user.EmailAddress = "tq@gmail.com";
-                    user.IsEmailConfirmed = true;
-                    result = await _userManager.CreateAsync(user, password);
+                    var user = new RegisterViewModel
+                    {
+                        TenancyName = Tenant.DefaultTenantName,
+                        Name = ConfigurationManager.AppSettings["nameUser"],
+                        Surname = ConfigurationManager.AppSettings["surnameUser"],
+                        EmailAddress = ConfigurationManager.AppSettings["defaultEmailUser"],
+                        UserName = usernameOrEmailAddress,
+                        Password = password,
+                        IsExternalLogin = false
+                    };
+
+                    //Cast to IdentityResult
+                    var response = Register(user);
                 }
                 else if (loginResult.Result == AbpLoginResultType.InvalidPassword)
                 {
-                    var userId = 0;
-                    var userToken = "";
-                    result = await _userManager.ResetPasswordAsync(userId, userToken, password);
+                    var userAsync = await _userManager.FindByNameOrEmailAsync(usernameOrEmailAddress);
+                    var userToken = await _userManager.GeneratePasswordResetTokenAsync(userAsync.Id);
+                    
+                    result = await _userManager.ResetPasswordAsync(userAsync.Id, userToken, password);
                 }
 
                 if (result != null)
