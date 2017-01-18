@@ -26,6 +26,9 @@ using Microsoft.Owin.Security;
 
 namespace MedicalVisitors.Web.Controllers
 {
+    using System.Configuration;
+    using System.DirectoryServices.AccountManagement;
+
     public class AccountController : MedicalVisitorsControllerBase
     {
         private readonly TenantManager _tenantManager;
@@ -104,7 +107,45 @@ namespace MedicalVisitors.Web.Controllers
 
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
+            string serverActiveDirectory = ConfigurationManager.AppSettings["serverActiveDirectory"];
+            string domainActiveDirectory = ConfigurationManager.AppSettings["domainActiveDirectory"];
+
+            bool activeDirectoryIsValid;
+
+            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, serverActiveDirectory, domainActiveDirectory))
+            {
+                activeDirectoryIsValid = pc.ValidateCredentials(usernameOrEmailAddress, password);
+            }
+
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
+
+            if (activeDirectoryIsValid)
+            {
+                IdentityResult result = null;
+
+                if (loginResult.Result == AbpLoginResultType.InvalidUserNameOrEmailAddress)
+                {
+                    User user = new User();
+                    user.TenantId = 1;
+                    user.UserName = usernameOrEmailAddress;
+                    user.Name = "TQ";
+                    user.Surname = "TQ";
+                    user.EmailAddress = "tq@gmail.com";
+                    user.IsEmailConfirmed = true;
+                    result = await _userManager.CreateAsync(user, password);
+                }
+                else if (loginResult.Result == AbpLoginResultType.InvalidPassword)
+                {
+                    var userId = 0;
+                    var userToken = "";
+                    result = await _userManager.ResetPasswordAsync(userId, userToken, password);
+                }
+
+                if (result != null)
+                {
+                     loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
+                }
+            }
 
             switch (loginResult.Result)
             {
