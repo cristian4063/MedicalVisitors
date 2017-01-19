@@ -11,6 +11,8 @@ using Abp.AutoMapper;
 using Abp.Configuration.Startup;
 using Abp.Domain.Uow;
 using Abp.Extensions;
+using Abp.IdentityFramework;
+using Abp.MultiTenancy;
 using Abp.Threading;
 using Abp.UI;
 using Abp.Web.Models;
@@ -133,14 +135,14 @@ namespace MedicalVisitors.Web.Controllers
                         TenancyName = Tenant.DefaultTenantName,
                         Name = ConfigurationManager.AppSettings["nameUser"],
                         Surname = ConfigurationManager.AppSettings["surnameUser"],
-                        EmailAddress = ConfigurationManager.AppSettings["defaultEmailUser"],
+                        EmailAddress = string.Format(ConfigurationManager.AppSettings["defaultEmailUser"], usernameOrEmailAddress),
                         UserName = usernameOrEmailAddress,
                         Password = password,
                         IsExternalLogin = false
                     };
 
                     //Cast to IdentityResult
-                    var response = Register(user);
+                    result = await RegisterUser(user);
                 }
                 else if (loginResult.Result == AbpLoginResultType.InvalidPassword)
                 {
@@ -219,6 +221,74 @@ namespace MedicalVisitors.Web.Controllers
             ViewBag.IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled;
 
             return View("Register", model);
+        }
+
+        public async Task<IdentityResult> RegisterUser(RegisterViewModel model)
+        {
+            IdentityResult result = null;
+
+            try
+            {
+                CheckModelState();
+
+                //Get tenancy name and tenant
+                if (!_multiTenancyConfig.IsEnabled)
+                {
+                    model.TenancyName = Tenant.DefaultTenantName;
+                }
+                else if (model.TenancyName.IsNullOrEmpty())
+                {
+                    throw new UserFriendlyException(L("TenantNameCanNotBeEmpty"));
+                }
+
+                var tenant = await GetActiveTenantAsync(model.TenancyName);
+
+                //Create user
+                var user = new User
+                {
+                    TenantId = tenant.Id,
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    EmailAddress = model.EmailAddress,
+                    IsActive = true
+                };
+
+                //Username and Password are required if not external login
+                if (model.UserName.IsNullOrEmpty() || model.Password.IsNullOrEmpty())
+                {
+                    throw new UserFriendlyException(L("FormIsNotValidMessage"));
+                }
+
+                user.UserName = model.UserName;
+                user.Password = new PasswordHasher().HashPassword(model.Password);
+
+                //Switch to the tenant
+                _unitOfWorkManager.Current.EnableFilter(AbpDataFilters.MayHaveTenant); //TODO: Needed?
+                _unitOfWorkManager.Current.SetTenantId(tenant.Id);
+
+                //Add default roles
+                user.Roles = new List<UserRole>();
+                foreach (var defaultRole in await _roleManager.Roles.Where(r => r.IsDefault).ToListAsync())
+                {
+                    user.Roles.Add(new UserRole { RoleId = defaultRole.Id });
+                }
+
+                result = await _userManager.CreateAsync(user);
+
+                //Save user
+                CheckErrors(result);
+                await _unitOfWorkManager.Current.SaveChangesAsync();
+
+                //Directly login if possible
+                if (user.IsActive) return result;
+            }
+            catch (UserFriendlyException ex)
+            {
+                ViewBag.IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled;
+                ViewBag.ErrorMessage = ex.Message;
+            }
+
+            return result;
         }
 
         [HttpPost]
